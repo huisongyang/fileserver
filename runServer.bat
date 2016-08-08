@@ -1,6 +1,6 @@
 @echo off
 rem 文件根目录
-set root.dir.path="D:\FileZilla FTP Client"
+set root.dir.path="D:\Program Files (x86)"
 
 ::不扫描文件，分号分隔
 set root.dir.exclude=
@@ -8,4 +8,4 @@ set root.dir.exclude=
 set root.dir.excludeDir=
 
 ::默认端口是9999
-java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp autoupdate-2.0.0-SNAPSHOT.jar com.yhs.autoupdate.server.Server
+java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar com.yhs.fileserver.server.Server

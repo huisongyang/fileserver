@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.yhs.fileserver</groupId>
-	<artifactId>autoupdate</artifactId>
+	<artifactId>fileserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>fileserver</name>
