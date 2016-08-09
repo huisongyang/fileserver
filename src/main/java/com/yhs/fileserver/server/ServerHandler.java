@@ -52,9 +52,11 @@ public class ServerHandler extends ChannelHandlerAdapter {
 		//差异列表
 		case 0x001:
 			byte[] bytes = req.getData();
-			FileUtil.writeFile(Constant.clientMd5, bytes);
-			CompareServer compare = new CompareServer(Constant.clientMd5,Constant.serverMd5);
+			String md5Name = Constant.clientMd5 + ctx.channel().id();
+			FileUtil.writeFile(md5Name, bytes);
+			CompareServer compare = new CompareServer(md5Name,Constant.serverMd5);
 			compare.compare();
+			FileUtil.deleteFile(md5Name);
 			Response res = new Response();
 			res.setDeleteFiles(compare.getDeleteList());
 			res.setNewFiles(compare.getNewList());

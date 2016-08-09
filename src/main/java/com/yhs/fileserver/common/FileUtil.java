@@ -46,4 +46,14 @@ public class FileUtil {
 		os.close();
 		f=null;
 	}
+	
+	public static void deleteFile(String name)
+	{
+		File f = new File(name);
+		if(f.exists())
+		{
+			f.delete();
+			f=null;
+		}
+	}
 }
