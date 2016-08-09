@@ -1,9 +1,3 @@
-.target/
-.logs/
-*/logs/
-*/*/logs/
-*/target/
-
 # maven ignore
 target/
 *.war
