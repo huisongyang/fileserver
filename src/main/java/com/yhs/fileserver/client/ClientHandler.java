@@ -35,7 +35,11 @@ public class ClientHandler extends ChannelHandlerAdapter {
 	OutputStream out;
 	long fileSize;
 	long writedSize = 0;
-
+	Stack<String> downList;
+	List<String> deleteFiles;
+	List<String> newFiles;
+	List<String> overrideFiles;
+	
 	public ClientHandler() {
 
 	}
@@ -76,14 +80,18 @@ public class ClientHandler extends ChannelHandlerAdapter {
 				throw new Exception("本地文件流没有初始化");
 			int len = buf.readableBytes();
 
-			// 如果文件大小是0KB，更新服务器则会直接响应个文件结尾符
-			if (len == 19) {
-				byte[] endBuf = new byte[19];
-				buf.readBytes(endBuf, 0, 19);
+			// 如果文件大小是0KB，更新服务器则会直接响应个文件结尾符,文件结尾符长度是6
+			if (len == 6) {
+				byte[] endBuf = new byte[6];
+				buf.readBytes(endBuf, 0, 6);
 				if (Constant.FILE_SEPARATOR.equals(new String(endBuf,CharsetUtil.UTF_8))) {
 					closeFileAndOut(ctx);
+					buf.release();
 					fireDownReq(ctx);
 					return;
+				}
+				else{
+					buf.readerIndex(0);
 				}
 			}
 
@@ -91,6 +99,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
 			writedSize += len;
 			if (writedSize == fileSize) {
 				closeFileAndOut(ctx);
+				buf.release();
 				fireDownReq(ctx);
 			}
 		} else if (msg instanceof Response) {
@@ -271,10 +280,6 @@ public class ClientHandler extends ChannelHandlerAdapter {
 		System.out.println("[info]: " + msg);
 	}
 
-	private Stack<String> downList;
-	private List<String> deleteFiles;
-	private List<String> newFiles;
-	private List<String> overrideFiles;
 
 	@Override
 	public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {

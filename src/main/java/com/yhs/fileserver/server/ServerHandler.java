@@ -36,10 +36,11 @@ public class ServerHandler extends ChannelHandlerAdapter {
 	 * @param channel
 	 */
 	private void writeContenEnd(Channel channel) {
-		ByteBuf buffer = channel.alloc().buffer(19);
+		ByteBuf buffer = channel.alloc().buffer(6);
 		byte[] buf = new String(Constant.FILE_SEPARATOR).getBytes(CharsetUtil.UTF_8);
 		buffer.writeBytes(buf);
 		channel.pipeline().writeAndFlush(buffer);
+		channel.pipeline().addBefore("chunkedWriteHandler", "marencoder", Server.marshallingEncoderCache);
 	}
 	
 	

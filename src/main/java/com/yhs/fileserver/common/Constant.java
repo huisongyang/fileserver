@@ -10,7 +10,7 @@ public class Constant {
 	/**
 	 * 文件结尾符
 	 */
-	public static String FILE_SEPARATOR = "□FILESEPARATOR□";
+	public static String FILE_SEPARATOR = "□□";
 	
 	/**
 	 * 客户端md5校验文件
