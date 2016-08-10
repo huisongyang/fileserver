@@ -19,6 +19,7 @@ import com.yhs.fileserver.pojo.Response;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.util.CharsetUtil;
 
 /**
  * 
@@ -79,7 +80,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
 			if (len == 19) {
 				byte[] endBuf = new byte[19];
 				buf.readBytes(endBuf, 0, 19);
-				if (Constant.FILE_SEPARATOR.equals(new String(endBuf))) {
+				if (Constant.FILE_SEPARATOR.equals(new String(endBuf,CharsetUtil.UTF_8))) {
 					closeFileAndOut(ctx);
 					fireDownReq(ctx);
 					return;

@@ -9,6 +9,7 @@ import com.yhs.fileserver.core.FileScan;
 import com.yhs.fileserver.pojo.Request;
 import com.yhs.fileserver.pojo.Response;
 
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerAdapter;
@@ -35,8 +36,10 @@ public class ServerHandler extends ChannelHandlerAdapter {
 	 * @param channel
 	 */
 	private void writeContenEnd(Channel channel) {
+		ByteBuf buffer = channel.alloc().buffer(19);
 		byte[] buf = new String(Constant.FILE_SEPARATOR).getBytes(CharsetUtil.UTF_8);
-		channel.pipeline().writeAndFlush(buf);
+		buffer.writeBytes(buf);
+		channel.pipeline().writeAndFlush(buffer);
 	}
 	
 	
@@ -91,6 +94,7 @@ public class ServerHandler extends ChannelHandlerAdapter {
 			long count = raf.length();
 			if(count == 0)
 			{
+				consoleLog("文件长度为0-->"+fileName);
 				writeContenEnd(ctx.channel());
 				return;
 			}
