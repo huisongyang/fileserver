@@ -85,6 +85,7 @@ public class ClientHandler extends ChannelHandlerAdapter {
 				byte[] endBuf = new byte[6];
 				buf.readBytes(endBuf, 0, 6);
 				if (Constant.FILE_SEPARATOR.equals(new String(endBuf,CharsetUtil.UTF_8))) {
+					consoleLog("空文件结尾符");
 					closeFileAndOut(ctx);
 					buf.release();
 					fireDownReq(ctx);
