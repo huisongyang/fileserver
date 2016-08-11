@@ -1,6 +1,6 @@
 @echo off
 rem 文件根目录
-set root.dir.path="D:\Program Files (x86)"
+set root.dir.path="D:\serverdir"
 
 ::不扫描文件，分号分隔
 set root.dir.exclude=
