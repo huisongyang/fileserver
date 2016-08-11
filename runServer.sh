@@ -1,10 +1,10 @@
-#¸ùÄ¿Â¼
+#æ ¹ç›®å½•
 root_dir_path=/home/weblogic/client
 
-#²»É¨ÃèÎÄ¼ş£¬·ÖºÅ·Ö¸ô
+#ä¸æ‰«ææ–‡ä»¶ï¼Œåˆ†å·åˆ†éš”
 root_dir_exclude=
-#²»É¨ÃèÄ¿Â¼£¬·ÖºÅ·Ö¸ô
+#ä¸æ‰«æç›®å½•ï¼Œåˆ†å·åˆ†éš”
 root_dir_excludeDir=
 
-#Ä¬ÈÏ¶Ë¿ÚÊÇ9999
+#é»˜è®¤ç«¯å£æ˜¯9999
 java -Droot.dir.path=${root_dir_path} -Droot.dir.exclude=${root_dir_exclude} -Droot.dir.excludeDir=${root_dir_excludeDir} -cp fileserver-0.0.1-SNAPSHOT.jar com.yhs.fileserver.server.Server

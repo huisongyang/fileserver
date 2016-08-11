@@ -1,19 +1,18 @@
 @echo off
 
-rem 配置文件根目录，如果为空，则当前目录为根目录
+rem 閰嶇疆鏂囦欢鏍圭洰褰曪紝濡傛灉涓虹┖锛屽垯褰撳墠鐩綍涓烘牴鐩綍
 set root.dir.path="D:\workspace\test"
 
 if "%root.dir.path%"=="" set root.dir.path=%CD%
 
-rem 不删除文件列表，分号分隔
+rem 涓嶅垹闄ゆ枃浠跺垪琛紝鍒嗗彿鍒嗛殧
 set root.dir.exclude="autoupdate-2.0.0-SNAPSHOT.jar;clientMd5.record;runClient.bat;Client.log"
-rem 不删除目录列表，分号分隔
+rem 涓嶅垹闄ょ洰褰曞垪琛紝鍒嗗彿鍒嗛殧
 set root.dir.excludeDir="log"
 
-rem 启动更新
+rem 鍚姩鏇存柊
 java -Droot.dir.path=%root.dir.path% -Droot.dir.exclude=%root.dir.exclude% -Droot.dir.excludeDir=%root.dir.excludeDir% -cp fileserver-0.0.1-SNAPSHOT.jar com.yhs.fileserver.client.Client 127.0.0.1 9999
-if "%errorlevel%"=="0" echo [info]: 连接关闭
+if "%errorlevel%"=="0" echo [info]: 杩炴帴鍏抽棴
 
-rem 启动应用
+rem 鍚姩搴旂敤
 echo done
-exit
