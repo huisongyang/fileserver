@@ -6,13 +6,16 @@
 git https://github.com/huisongyang/fileserver.git
 mvn package
 cd ./target
-#启动服务端
-vi runServer.sh #配置root.dir.path=你需要更新的文件目录
-./runServer.sh
+
+#编辑runServer.bat或者runServer.sh，配置root.dir.path="你需要更新的文件目录"
+
+#启动服务
+在windows平台下运行runServer.bat
+在linux平台下运行runServer.sh
 
 #启动客户端更新
 vi runClient.bat #配置root.dir.path=你的应用程序目录
-call runClient.bat
+windows平台下运行runClient.bat
 ```
 
 #Authors
