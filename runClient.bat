@@ -3,10 +3,10 @@
 rem 配置文件根目录，如果为空，则当前目录为根目录
 set root.dir.path="D:\workspace\test"
 
-if "%root.dir.path%"=="" set root.dir.path=%CD%
+if "%root.dir.path%"=="" set root.dir.path="%CD%"
 
 rem 不删除文件列表，分号分隔
-set root.dir.exclude="autoupdate-2.0.0-SNAPSHOT.jar;clientMd5.record;runClient.bat;Client.log"
+set root.dir.exclude="fileserver-0.0.1-SNAPSHOT.jar;clientMd5.record;runClient.bat;Client.log"
 rem 不删除目录列表，分号分隔
 set root.dir.excludeDir="log"
 
