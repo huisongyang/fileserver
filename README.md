@@ -3,7 +3,7 @@
 
 ##使用
 ```shell
-git https://github.com/huisongyang/fileserver.git
+git clone https://github.com/huisongyang/fileserver.git
 mvn package
 ```
 ###windows:
