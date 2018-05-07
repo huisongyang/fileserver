@@ -1,12 +1,12 @@
 # fileserver
 一个基于netty的文件服务器，可以用于分发应用程序，文件md5校验比对差量更新，支持大文件传输
 
-##使用
+## 使用
 ```shell
 git clone https://github.com/huisongyang/fileserver.git
 mvn package
 ```
-###windows:
+### windows:
 编辑./target/runServer.bat，配置root.dir.path
 ```bat
 @echo off
@@ -27,7 +27,7 @@ pause > nul
 编辑./target/runClient.bat，配置root.dir.path
 运行runClient.bat
 
-###linux:
+### linux:
 编辑./target/runServer.sh，配置root.dir.path
 ```shell
 #根目录
